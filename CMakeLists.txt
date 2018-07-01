@@ -95,24 +95,26 @@ endif(DJVU_FOUND)
 # HAVE_GOCR_LIB
 # HAVE_LEPTONICA_LIB
 # HAVE_TESSERACT_LIB
-
+pkg_search_module(LEPTONICA REQUIRED lept)
 # ---- Describe project
 
 SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DUSE_CMAKE -Wall")
 
-include_directories(. willuslib k2pdfoptlib)
+include_directories(. willuslib k2pdfoptlib build ${LEPTONICA_INCLUDE_DIRS} include_mod)
+
+
+
+add_subdirectory(willuslib)
+add_subdirectory(k2pdfoptlib)
 
 configure_file (
   "${PROJECT_SOURCE_DIR}/config.h.in"
   "${PROJECT_BINARY_DIR}/config.h"
 )
 
-add_subdirectory(willuslib)
-add_subdirectory(k2pdfoptlib)
-
 # ms
 add_executable(k2pdfopt k2pdfopt.c)
-target_link_libraries (k2pdfopt k2pdfoptlib willuslib ${K2PDFOPT_LIB})
+target_link_libraries (k2pdfopt k2pdfoptlib willuslib ${K2PDFOPT_LIB} ${JASPER_LIBRARIES} ${LEPTONICA_LIBRARIES})
 
 
 message("")
