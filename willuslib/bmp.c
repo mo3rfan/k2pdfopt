@@ -37,7 +37,7 @@
 #include <jpeglib.h>
 #endif
 #ifdef HAVE_JASPER_LIB
-#include <jasper.h>
+#include <jasper/jasper.h>
 #endif
 
 #define BOUND(x,xmin,xmax)  if ((x)<(xmin)) (x)=(xmin); else { if ((x)>(xmax)) (x)=(xmax); }
