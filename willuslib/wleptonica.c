@@ -133,7 +133,7 @@ pixWrite("pixb.png",pixb,IFF_PNG);
     dew1=dewarpCreate(pixb,1);
     pixDestroy(&pixb);
     dewarpaInsertDewarp(dewa,dew1);
-    dewarpBuildPageModel_ex(dew1,debug,fit_order);
+    //dewarpBuildPageModel_ex(dew1,debug,fit_order);
     if (bmp1!=NULL)
         {
         PIX *pix2,*pix2d;
